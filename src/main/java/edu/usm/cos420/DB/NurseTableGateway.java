@@ -165,5 +165,23 @@ public class NurseTableGateway {
 		
 		return true;
 	}
+	
+	public static boolean removeFromNursesTable(int id) throws ClassNotFoundException, SQLException {
+		Connection con = createDBConnection();
+		if (con == null) {
+			throw new SQLException();
+		}
+
+		Statement st = null;
+		ResultSet rs = null;
+
+		st = con.createStatement();
+		int delete = st.executeUpdate("DELETE FROM nurses x WHERE x.userid = '" + id + "';");
+		
+		if(delete == 0)
+			return false;
+		
+		return true;
+	}
 
 }
