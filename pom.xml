@@ -55,5 +55,6 @@
 	</dependencies>
 	<build>
 		<finalName>NurseApp</finalName>
+	
 	</build>
 </project>

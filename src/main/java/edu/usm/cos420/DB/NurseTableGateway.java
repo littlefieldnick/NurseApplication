@@ -43,7 +43,7 @@ public class NurseTableGateway {
 																	// username
 		String strDBPassword = properties.getProperty("jdbc.password");
 		String strDBName = properties.getProperty("db.name");
-		String portNumber = properties.getProperty("port");
+		String portNumber = properties.getProperty("cloud.port");
 		Connection con;
 
 		System.out.println("Trying connection ");
@@ -142,6 +142,28 @@ public class NurseTableGateway {
 			con.close();
 
 		return nurseList;
+	}
+	
+	public static boolean createNursesTable() throws ClassNotFoundException, SQLException {
+		Connection con = createDBConnection();
+		if (con == null) {
+			throw new SQLException();
+		}
+
+		Statement st = null;
+		ResultSet rs = null;
+
+		st = con.createStatement();
+
+		rs = st.executeQuery("SELECT * FROM information_schema.tables  WHERE table_schema = 'public' AND table_name = 'nurses';");
+
+		if(rs.next())
+			return false;
+		
+		st.executeUpdate("CREATE TABLE nurses (firstName VARCHAR(255), lastName "
+				+ "VARCHAR(255), countryCode VARCHAR(255), userId INT PRIMARY KEY);");
+		
+		return true;
 	}
 
 }
