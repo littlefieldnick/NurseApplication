@@ -7,9 +7,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-    @SuppressWarnings("unchecked")
-    ArrayList<Nurse> nurses=
-            (ArrayList<Nurse>)request.getAttribute("nursesList");
+	@SuppressWarnings("unchecked")
+	ArrayList<Nurse> nurses = (ArrayList<Nurse>) request.getAttribute("nursesList");
 %>
 
 <html>
@@ -20,14 +19,24 @@
 <body>
 
 	<h2>Delete a Nurse</h2>
-	<% for(int i = 0; i < nurses.size(); i++){
-				Nurse n = nurses.get(i); %>
-	<%=n%>
-	<form action="DeleteNurse" method="post">
-		<input type="hidden" name="nurseId" value="<%= n.getId()%>">
-		<button type="submit">Delete Nurse</button>
-	</form>
-	<% } %>
+	<%if(nurses.size() == 0) {%>
+		There are no nurses in the database to delete.
+	<%} else { %>
+			<%
+			for (int i = 0; i < nurses.size(); i++) {
+				Nurse n = nurses.get(i);
+			%>
+			
+			<%=n%>
+			<form action="DeleteNurse" method="post">
+				<input type="hidden" name="nurseId" value="<%=n.getId()%>">
+				<button type="submit">Delete Nurse</button>
+			</form>
+			<%} %>
+			<br />
+			<%
+		}
+	%>
 
 	<form action="AddNurse.html" method="GET">
 		<button type="submit">Add a Nurse to the Database</button>
