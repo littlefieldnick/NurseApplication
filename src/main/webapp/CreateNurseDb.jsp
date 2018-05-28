@@ -21,5 +21,19 @@
 	<c:if test="${not created}">
 		The nurses database has already been created. 
 	</c:if>
+	
+	<br/>
+	
+	<form action="AddNurse.html" method="GET">
+		<button type="submit">Add a Nurse to the Database</button>
+	</form>
+	<br>
+	<form action="DisplayNursesDB" method="GET">
+		<button type="submit">View a Nurse</button>
+	</form>
+	<br>
+	<form action="index.jsp" method="GET">
+		<button type="submit">Back to index page.</button>
+	</form>
 </body>
 </html>

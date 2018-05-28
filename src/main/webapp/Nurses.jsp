@@ -26,5 +26,19 @@
 		</ul>
  
 	</c:if>
+	
+	<br/>
+	
+	<form action="AddNurse.html" method="GET">
+		<button type="submit">Add a Nurse to the database.</button>
+	</form>
+	
+	<form action="DeleteNurse" method="GET">
+		<button type="submit">Delete a Nurse to the database.</button>
+	</form>
+	
+	<form action="index.jsp" method="GET">
+		<button type="submit">Back to index page.</button>
+	</form>
 </body>
 </html>

@@ -21,5 +21,22 @@
 	<c:if test="${not deletedSuccess}">
 		The nurse could not be removed from the database. 
 	</c:if>
+	
+	<form action="DeleteNurse" method="GET">
+		<button type="submit">Delete another Nurse from the Database.</button>
+	</form>
+	<br>
+	
+	<form action="AddNurse.html" method="GET">
+		<button type="submit">Add a Nurse to the Database.</button>
+	</form>
+	<br>
+	<form action="DisplayNursesDB" method="GET">
+		<button type="submit">View the Nurse list.</button>
+	</form>
+	<br>
+	<form action="index.jsp" method="GET">
+		<button type="submit">Back to index page.</button>
+	</form>
 </body>
 </html>
